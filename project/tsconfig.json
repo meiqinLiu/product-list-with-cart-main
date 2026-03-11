@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "NodeNext",
+    "target": "ESNext",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "strict": false,
+    "types": ["node"]
+  },
+  "include": ["src", "vite.config.mts"]
+}
+

@@ -1,2 +1,123 @@
+.product-card {
+    position: relative;
+    width: 250px;
 
+    &__image-picture {
+        height: 240px;
+        display: block; // 让 picture 像块级元素
+        border-radius: 16px; // 和设计图一样的圆角
+        overflow: hidden; // 确保图片圆角生效
+        margin-bottom: 30px; // 和下面文字拉开一点间距
 
+        img {
+            width: 100%; // 宽度占满卡片
+            height: 100%;
+            display: block; // 去掉 img 自带的底部空隙
+            object-fit: cover; // 裁剪而不是拉伸
+            transition: transform 0.2s ease; // 为 hover 动画做准备
+        }
+    }
+
+    // 可选：做一个轻微 hover 放大效果
+    &:hover &__image-picture img {
+        transform: scale(1.02);
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    &__category {
+        font-size: 12px;
+        color: #837670;
+        margin-bottom: 5px;
+    }
+
+    &__name {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    &__price {
+        font-size: 16px;
+        color: #A86249;
+    }
+
+    &__actions {
+        position: absolute;
+        top: 215px;
+        left: 0;
+        right: 0;
+        width: 160px;
+        height: 45px;
+        margin: auto;
+        border-radius: 25px;
+        overflow: hidden;
+    }
+
+    &__actions-button {
+        border: 1px solid #292420;
+        width: 100%;
+        height: 100%;
+        border-radius: 25px;
+        background-color: #fff;
+        color: #292420;
+        font-size: 14px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        &:hover,
+        &:focus {
+            border: 1px solid #A86249;
+            color: #A86249;
+        }
+    }
+
+    &__actions-quantity {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        height: 100%;
+        padding: 0 12px;
+        box-sizing: border-box;
+        background-color: #C83B0E;
+        color: #fff;
+        font-size: 14px;
+    }
+
+    &__actions-quantity-button {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #fff;
+        color: #fff;
+        border-radius: 12px;
+        background-color: transparent;
+        cursor: pointer;
+        font-weight: 600;
+
+        svg {
+            flex-shrink: 0; // 防止被压缩
+        }
+
+    }
+
+    &__actions-quantity-button:hover {
+        color: #C83B0E;
+        background-color: #fff;
+
+        svg {
+            fill: currentColor;
+        }
+    }
+}

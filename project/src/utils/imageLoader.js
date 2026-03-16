@@ -5,7 +5,6 @@ const modules = import.meta.glob('@/assets/images/*.{png,jpg,jpeg,svg}', {
   
   const images = {}
 
-  // console.log(modules);
   
   for (const path in modules) {
     const fileName =   path.replace('/src/assets/images', '')
@@ -13,7 +12,6 @@ const modules = import.meta.glob('@/assets/images/*.{png,jpg,jpeg,svg}', {
   }
   
   export function getImage(name) {
-    console.log(images);
     return images[name]
   }
   

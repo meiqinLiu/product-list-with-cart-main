@@ -8,7 +8,7 @@ const App = () => {
     <div className="app">
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
         </Routes>
       </main>
     </div>

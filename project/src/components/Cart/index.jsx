@@ -23,12 +23,31 @@ const Cart = ({ cartItems, products, onDecrease, onClearCart }) => {
     const total = cartList.reduce((acc, item) => acc + item.price * item.quantity, 0);
     const totalQuantity = cartList.reduce((acc, item) => acc + item.quantity, 0);
 
+    // 打开确认弹窗时：锁定 body 滚动，并补偿滚动条宽度，避免布局抖动
     const orderConfirm = () => {
+        const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+        const bodyStyle = document.body.style;
+
+        if (scrollBarWidth > 0) {
+            // 先把原来的 padding-right 存起来，关闭时还原
+            document.body.dataset.originalPaddingRight = bodyStyle.paddingRight || '';
+            bodyStyle.paddingRight = `${scrollBarWidth}px`;
+        }
+
         document.body.classList.add('no-scroll');
         setIsOpen(true);
     };
 
+    // 关闭确认弹窗时：恢复 body 的样式
     const handleClose = () => {
+        const bodyStyle = document.body.style;
+        const originalPaddingRight = document.body.dataset.originalPaddingRight;
+
+        if (originalPaddingRight !== undefined) {
+            bodyStyle.paddingRight = originalPaddingRight;
+            delete document.body.dataset.originalPaddingRight;
+        }
+
         document.body.classList.remove('no-scroll');
         setIsOpen(false);
     };
